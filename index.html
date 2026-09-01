@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>할 일 목록</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <h1 class="app__title">할 일 목록</h1>
+
+    <form id="new-todo-form" class="new-todo" autocomplete="off">
+      <input
+        id="new-todo-input"
+        class="new-todo__input"
+        type="text"
+        placeholder="무엇을 해야 하나요?"
+        aria-label="새 할 일 입력"
+        maxlength="500"
+      >
+      <button type="submit" class="new-todo__add">추가</button>
+    </form>
+
+    <section class="filters" aria-label="필터">
+      <button type="button" class="filters__btn is-active" data-filter="all">전체</button>
+      <button type="button" class="filters__btn" data-filter="active">진행 중</button>
+      <button type="button" class="filters__btn" data-filter="completed">완료</button>
+    </section>
+
+    <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+
+    <p id="empty-state" class="empty-state" hidden></p>
+
+    <footer class="app__footer">
+      <span id="item-count" class="app__count">0개 남음</span>
+      <button type="button" id="clear-completed" class="app__clear">완료 항목 삭제</button>
+    </footer>
+  </main>
+
+  <template id="todo-item-template">
+    <li class="todo" data-id="">
+      <label class="todo__check">
+        <input type="checkbox" class="todo__checkbox">
+        <span class="todo__checkmark" aria-hidden="true"></span>
+      </label>
+      <span class="todo__text" tabindex="0" role="button" title="더블클릭하여 수정"></span>
+      <input type="text" class="todo__edit" maxlength="500" aria-label="할 일 수정" hidden>
+      <button type="button" class="todo__delete" aria-label="삭제">&times;</button>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
